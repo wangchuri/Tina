@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>tina的整体设计</h1>
+    <p>1.模型读取和使用</p>
+    <p>2.文件夹管理</p>
+    <p>3.工具模块</p>
+    <P>4.记忆模块</P>
+    <h1>一.模型读取和使用</h1>
+    <h2>1.tina的模型基础</h2>
+    <p>tina的基座模型时采用的通义的qwen2.5-7b来实现的，tian是在此基础上对qwen2.5-7b的模型做了微调</p>
+    <p>为了实现高效率低占用的实现，对qwen2.5-7b进行了量化，使用的是llama.cpp的gguf格式模型，在python中使用llama-cpp-python来读取</p>
+    <p>模型本身提供了对工具调用的实现，所以我的主要工作就是尝试编写一个agent框架</p>
+    <p>该项目一开始是做为RAG学习项目来实现的，后面尝试改为agent框架</p>
+    <h2>2.模型读取</h2>
+    <p>存在core.LLM.tina模块里面</p>
+    <p></p>
+    <h1>模型量化</h1>
+    <p>选择的是将hf文件转化为gguf文件来实现，一是gguf文件可以通过llama-cpp-python来实现读取</p>
+    <p>二是你指望一个学生来从头开始实现一套完整的模型量化系统？</p>
+    <h2>1.模型合并</h2>
+    <p>大模型为了传输方便，会将模型分片，在需要的时候合并，这里给出合并模型的方法</p>
+    <p>在github上找到llama.cpp的发行版，下载windows版本的（如果在windows上开发），创建一个文件夹后将该发行版解压到该文件夹中</p>
+    <p class="notice">注意：如果发行版不存在，可以尝试手动编译llama.cpp的源代码</p>
+    <p>在huggingface里面找到你需要下载的模型文件的gguf版本，放在你自定义的文件夹内</p>
+    <p>通常的大模型采取分片的方法就是使用llama-gguf-split程序，我们可以通过该程序将分片模型合并</p>
+    <code>[在终端里面打开该文件夹] .\llama-gguf-split.exe --merge [分片模型文件名] [输出文件名]</code>
+    <p>你只需要输入第一个分片文件的路径和输出文件的路径，程序会自动合并所有分片文件</p>
+    <p>2.hf文件转gguf文件</p>
+    <p>这个是为了应对你需要的模型文件没有对应的gguf文件的情况，但是一般情况下没有gguf文件意味着对llama-cpp-python不兼容</p>
+    <p>在huggingface上找到你需要下载的模型文件的hf版本，下载后将其转化为gguf文件</p>
+    <p>pip install llama-cpp-python --index-url https://abetlen.github.io/llama-cpp-python/whl/cu124</p>
+</body>
+</html>

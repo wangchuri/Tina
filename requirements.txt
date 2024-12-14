@@ -1,0 +1,15 @@
+transformers
+pandas
+numpy
+tensorflow
+peft
+datasets
+tf_keras
+python-docx
+PyPDF2
+scikit-learn
+openai
+dashscope
+faiss-cpu
+diskcache
+# llama-cpp-python

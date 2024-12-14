@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "address":"/test/test.txt/12",
+        "vectorizeContent": [
+            0,
+            [
+                0
+            ]
+        ]
+    },
+    {
+        "id": 2,
+        "address":"/test/test.txt/13",
+        "vectorizeContent": [
+            0,
+            [
+                0
+            ]
+        ]
+    }
+]
